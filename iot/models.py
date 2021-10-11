@@ -15,9 +15,15 @@ class GpsTrackerMessage(models.Model):
     latitude = models.DecimalField(max_digits=12, decimal_places=6)
     longitude = models.DecimalField(max_digits=12, decimal_places=6)
     alarm = models.BooleanField(default=False)
-    battery = models.DecimalField(max_digits=5, decimal_places=3)
+    battery = models.DecimalField(max_digits=7, decimal_places=3, default=0.0)
+    battery_perc = models.DecimalField(max_digits=7, decimal_places=3, default=0.0)
     led_activity = models.BooleanField(default=False)
     movement_detection = models.IntegerField()
+    roll = models.DecimalField(max_digits=7, decimal_places=3, null=True)
+    pitch = models.DecimalField(max_digits=7, decimal_places=3, null=True)
+    altitude = models.DecimalField(max_digits=7, decimal_places=3, null=True)
+    hdop = models.DecimalField(max_digits=7, decimal_places=3, null=True)
+    message = models.OneToOneField(Message, on_delete=models.SET_NULL, null=True)
 
 
 class LoraMessage(models.Model):
@@ -30,3 +36,4 @@ class LoraMessage(models.Model):
     locAccuracy = models.DecimalField(max_digits=12, decimal_places=6)
     locPrecision = models.DecimalField(max_digits=12, decimal_places=6)
     locTime = models.DateTimeField()
+    message = models.OneToOneField(Message, on_delete=models.SET_NULL, null=True)
