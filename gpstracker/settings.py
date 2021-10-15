@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['448d-94-208-6-10.ngrok.io', '127.0.0.1' ]
 
 INSTALLED_APPS = [
     'iot.apps.IotConfig',
+    'maps.apps.MapsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
